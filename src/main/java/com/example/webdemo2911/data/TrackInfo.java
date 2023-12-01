@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 public interface TrackInfo {
     Integer getId();
 
-    @Value("#{target.name + ' by ' + target.composer}")
+    @Value("#{target.composer!=null ? target.name + ' by ' + target.composer : target.name }")
     String getFullTitle();
 
     Integer getMilliseconds();

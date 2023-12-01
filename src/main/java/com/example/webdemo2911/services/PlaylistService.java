@@ -2,6 +2,7 @@ package com.example.webdemo2911.services;
 
 import com.example.webdemo2911.data.Playlist;
 import com.example.webdemo2911.data.Track;
+import com.example.webdemo2911.data.TrackInfo;
 import com.example.webdemo2911.repositories.PlaylistRepository;
 import com.example.webdemo2911.repositories.TrackRepository;
 import lombok.AllArgsConstructor;
@@ -25,8 +26,8 @@ public class PlaylistService {
         return playlistRepository.findById(id);
     }
 
-    public List<Track> getTracksAvailable(int id) {
-        return trackService.findTracksAvailableForPlaylist(getPlaylist(id).get());
+    public List<TrackInfo> getTracksAvailable(int id) {
+        return trackService.findTracksAvailableForPlaylist(id);
     }
 
     public void addTrackToPlaylist(int playlistId, int trackId) {

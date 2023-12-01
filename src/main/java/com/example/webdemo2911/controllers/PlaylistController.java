@@ -3,6 +3,7 @@ package com.example.webdemo2911.controllers;
 import com.example.webdemo2911.data.Artist;
 import com.example.webdemo2911.data.Playlist;
 import com.example.webdemo2911.data.Track;
+import com.example.webdemo2911.data.TrackInfo;
 import com.example.webdemo2911.services.PlaylistService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -32,7 +33,7 @@ public class PlaylistController {
         Optional<Playlist> playlistOpt = playlistService.getPlaylist(id);
         if (playlistOpt.isPresent()) {
             model.addAttribute("pl", playlistOpt.get());
-            List<Track> tracksAvailable = playlistService.getTracksAvailable(id);
+            List<TrackInfo> tracksAvailable = playlistService.getTracksAvailable(id);
             model.addAttribute("ta", tracksAvailable);
             return "playlist_info";
         } else {

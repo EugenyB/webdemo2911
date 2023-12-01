@@ -21,4 +21,5 @@ public class ArtistService {
     public Optional<Artist> getArtist(Integer id) {
         return artistRepository.findById(id);
     }
+
 }

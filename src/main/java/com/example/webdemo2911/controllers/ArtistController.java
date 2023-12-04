@@ -1,6 +1,7 @@
 package com.example.webdemo2911.controllers;
 
 import com.example.webdemo2911.data.Artist;
+import com.example.webdemo2911.services.AlbumService;
 import com.example.webdemo2911.services.ArtistService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,8 @@ import java.util.Optional;
 public class ArtistController {
 
     private final ArtistService artistService;
+
+    private AlbumService albumService;
 
     @GetMapping("/artists")
     public String showArtists(Model model) {
@@ -35,4 +38,13 @@ public class ArtistController {
         }
     }
 
+    @PostMapping("/artist_info/add_album")
+    public String addAlbum(@RequestParam int aid, @RequestParam String album) {
+        Optional<Artist> artist = artistService.getArtist(aid);
+        if (artist.isPresent()) {
+            albumService.addAlbum(artist.get(), album);
+            return "redirect:/artist_info/" + aid;
+        }
+        return null;
+    }
 }
